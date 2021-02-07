@@ -62,10 +62,10 @@ if (isset($_GET['page'])) {
 <!-- loop  --> 
 <?php 
 if (isset($_GET['Fristname'])){
-  $sql = "select * from member  
+  $sql = "SELECT * from member  
   where (Firstname like '%".$_GET['Fristname']."%' or lastname like '%".$_GET['Fristname']."%') or (IDMember like '".$_GET['Fristname']."%')" ;
 }else{
-  $sql = "select * from member order by IDMember limit {$start},{$perpage}";
+  $sql = "SELECT * from member order by IDMember limit {$start},{$perpage}";
 }      
 
 $query = mysqli_query($link, $sql);
