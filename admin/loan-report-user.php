@@ -16,7 +16,7 @@ function show_day($showday){
 
 $now_data=date('Y-m-d');
 
-$sql = "SELECT lp.* , m.Firstname, m.Lastname  FROM  loanpayment as lp , member as m , loanbook as lb 
+$sql = "SELECT lp.* ,m.IDMember, m.Firstname, m.Lastname  FROM  loanpayment as lp , member as m , loanbook as lb 
 WHERE lp.RefNo=.lb.RefNo and lp.Username='$Username' and m.IDMember=lb.IDMember and lp.CreateDate ='$now_data' ORDER BY  lp.Username  DESC ";
 
 $queryloan = mysqli_query($link, $sql);
@@ -33,7 +33,8 @@ $num=0; $sum1=0; $sum2=0;
 <table class="table table-sm" cellspacing="0" width="100%">
        <thead>
           <tr>
-            <th >IDLoanPay</th>
+          <th >IDLoanPay</th>
+          <th >IDMember</th>
             <th >ชื่อสมาชิก</th>
             <th >RefNo </th>
             <th >CreateDate </th>
@@ -52,6 +53,7 @@ $sum3=0;
 while($rs1 = mysqli_fetch_array($queryloan))
         {
           $IDLoanPay=$rs1['IDLoanPay'];
+          $IDMember=$rs1['IDMember'];
           $FullName=$rs1['Firstname']." ".$rs1['Lastname'];
           $RefNo=$rs1['RefNo'];
           $CreateDate=$rs1['CreateDate'];
@@ -61,7 +63,8 @@ while($rs1 = mysqli_fetch_array($queryloan))
           $Username=$rs1['Username'];
 ?>             
       <tr>
- 						<td><?php echo $IDLoanPay; ?></td>    
+      <td><?php echo $IDLoanPay; ?></td>    
+      <td><?php echo $IDMember; ?></td>    
  						<td><?php echo $FullName; ?></td>                
             <td><?php echo $RefNo; ?></td>                            
  						<td><?php echo show_day($CreateDate); ?></td>                
@@ -77,7 +80,8 @@ while($rs1 = mysqli_fetch_array($queryloan))
   } 
 ?>
  <tr class='table-active'>
- 						<td></td>                 
+ <td></td>                 
+ <td></td>                 
  						<td><b>ยอดรวม</b></td>                 
  						<td></td>                 
  						<td></td>                 

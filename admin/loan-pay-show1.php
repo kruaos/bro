@@ -128,7 +128,8 @@ while($rsmemb = mysqli_fetch_array($qmem)){
 
       $CountMonthLoanpayment=($u_y*12)+$u_m;
       $count_m =($u_y*12)+$u_m;
-      $deposit_comment= $u_y." ปี ".$u_m." เดือน ".$u_d." วัน = ".$count_m." เดือน -> ".$time." รอบ";
+      // $deposit_comment= $u_y." ปี ".$u_m." เดือน ".$u_d." วัน = ".$count_m." เดือน -> ".$time." รอบ";
+      $deposit_comment= $u_y." ปี ".$u_m." เดือน ".$u_d." วัน = ".$count_m." เดือน";
 
 ?>                    
                     <tr>
@@ -140,9 +141,10 @@ while($rsmemb = mysqli_fetch_array($qmem)){
                       <td><?php   ?></td>
                       <td class="text-center"><?php 
                         if($CountMonthLoanpayment<>0){
-                          echo "เริ่ม ".$LastDate." ";  
-                          echo "หยุด ".$TodayDate." ";  
-                          echo " ".$deposit_comment." ";  
+                          // echo "เริ่ม ".$LastDate." ";  
+                          // echo "หยุด ".$TodayDate." ";  
+                          // echo "<br> ";  
+                          echo $deposit_comment." ";  
                           echo "ขาดส่ง ".$CountMonthLoanpayment." เดือน";  
                         }
                         ?>
