@@ -12,87 +12,90 @@ $employee_use = $_SESSION['employee_USER'];
 
 
 
-    <div class="container-fluid ">
-        <div class="row">
-            <div class="p-3 mb-2 col bg-primary">
-                <h1 class="display-6">ระบบฝากสัจจะ </h1>
-                <?php
-                echo "รหัสเจ้าหน้าที่ : " . $employee_use;
-                ?>
-            </div>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="p-3 mb-2 col bg-primary">
+            <h1 class="display-6">ระบบฝากสัจจะ </h1>
+            <?php
+            echo "รหัสเจ้าหน้าที่ : " . $employee_use;
+            ?>
         </div>
-        <div class="row">
-            <div class="col col-sm-12 col-md-4 col-lg-4 ">
-                <!-- <form method="POST" action="dep-pay-tool-chk.php" > -->
-                <form method="POST" action="dep-pay-insert.php">
-                    <div class="form-group">
-                        <label>รหัสสมาชิก</label>
-                        <input type="text" class="form-control " placeholder="รหัสสมาชิก" name="IDMember_Dep" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" onfocus="this.value = this.value;" required autofocus>
-                        <!-- <input type="hidden" class="form-control "  value='a' name="switch_menu1"> -->
-                        <!-- <input type="submit" class="form-control btn-warning"  name="switch_menu1"> -->
-                    </div>
-                </form>
-                <form method="POST" action="dep-pay-tool.php">
+    </div>
+    <div class="row">
+        <div class="col col-sm-12 col-md-4 col-lg-4 ">
+            <!-- <form method="POST" action="dep-pay-tool-chk.php" > -->
+            <form method="POST" action="dep-pay-insert.php">
+                <div class="form-group">
+                    <label>รหัสสมาชิก</label>
+                    <input type="text" class="form-control " placeholder="รหัสสมาชิก" name="IDMember_Dep" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" onfocus="this.value = this.value;" required autofocus>
+                    <!-- <input type="hidden" class="form-control "  value='a' name="switch_menu1"> -->
+                    <!-- <input type="submit" class="form-control btn-warning"  name="switch_menu1"> -->
+                </div>
+            </form>
+            <form method="POST" action="dep-pay-tool.php">
 
-                </form>
-            </div>
-            <div class="col col-sm-12 col-md-8 col-lg-8 ">
-                <h3>แสดงรายการล่าสุด
-                    <a href="dep-pay-tool-showall.php" class="btn btn-danger col-1">ค้นหา</a>
-                </h3>
+            </form>
+        </div>
+        <div class="col col-sm-12 col-md-8 col-lg-8 ">
+            <h3>แสดงรายการล่าสุด
+                <a href="dep-pay-tool-showall.php" class="btn btn-danger col-1">ค้นหา</a>
+            </h3>
 
-                <!-- <table class="table table-bordered"  id='EdataTable' > -->
-                <!-- <table class="table table-bordered table-sm"  id='EdataTable' > -->
-                <table class="table table-bordered table-sm">
-                    <thead>
-                        <tr>
-                            <th scope="col">ที่</th>
-                            <th scope="col">รหัสสมาชิก</th>
-                            <th scope="col">รหัสบัญชี</th>
-                            <th scope="col">ชื่อ - สกุล</th>
-                            <th scope="col">เงินสัจจะ</th>
-                            <th scope="col">แก้ไข</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $Datenow = date('Y-m-d');
-                        $SqlShowTable = "Select * from deposit where username='$employee_use' and createdate='$Datenow' order by IDDeposit DESC limit 10";
-                        $QueryShowTable = mysqli_query($link, $SqlShowTable);
-                        $ShowSumAmount = 0;
-                        $num1 = 1;
-                        while ($Result1 = mysqli_fetch_array($QueryShowTable)) {
+            <!-- <table class="table table-bordered"  id='EdataTable' > -->
+            <!-- <table class="table table-bordered table-sm"  id='EdataTable' > -->
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">ที่</th>
+                        <th scope="col">รหัสสมาชิก</th>
+                        <th scope="col">รหัสบัญชี</th>
+                        <th scope="col">ชื่อ - สกุล</th>
+                        <th scope="col">เงินสัจจะ</th>
+                        <th scope="col">แก้ไข</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $Datenow = date('Y-m-d');
+                    $SqlShowTable = "Select * from deposit where username='$employee_use' and createdate='$Datenow' order by IDDeposit DESC limit 10";
+                    $QueryShowTable = mysqli_query($link, $SqlShowTable);
+                    $ShowSumAmount = 0;
+                    $num1 = 1;
+                    while ($Result1 = mysqli_fetch_array($QueryShowTable)) {
 
-                            $IDRegFund = $Result1['IDRegFund'];
-                            $Amount = $Result1['Amount'];
-                            $IDDeposit = $Result1['IDDeposit'];
+                        $IDRegFund = $Result1['IDRegFund'];
+                        $Amount = $Result1['Amount'];
+                        $IDDeposit = $Result1['IDDeposit'];
 
-                            $SqlIDMember = "SELECT * FROM regfund WHERE IDRegfund=$IDRegFund";
-                            $QueryIDMember = mysqli_query($link, $SqlIDMember);
-                            while ($RQid = mysqli_fetch_array($QueryIDMember)) {
-                                $IDMember = $RQid['IDMember'];
-                                $SqlFullName = "SELECT * FROM member WHERE IDMember=$IDMember";
-                                $QueryFullName = mysqli_query($link, $SqlFullName);
-                                while ($RQFullName = mysqli_fetch_array($QueryFullName)) {
-                                    $FullName = $RQFullName['Title'] . $RQFullName['Firstname'] . " " . $RQFullName['Lastname'];
-                                }
+                        $SqlIDMember = "SELECT * FROM regfund WHERE IDRegfund=$IDRegFund";
+                        $QueryIDMember = mysqli_query($link, $SqlIDMember);
+                        while ($RQid = mysqli_fetch_array($QueryIDMember)) {
+                            $IDMember = $RQid['IDMember'];
+                            $SqlFullName = "SELECT * FROM member WHERE IDMember=$IDMember";
+                            $QueryFullName = mysqli_query($link, $SqlFullName);
+                            while ($RQFullName = mysqli_fetch_array($QueryFullName)) {
+                                $FullName = $RQFullName['Title'] . $RQFullName['Firstname'] . " " . $RQFullName['Lastname'];
                             }
-                            
-                            $ShowSumAmount = $ShowSumAmount + $Amount;
-                        ?>
-                            <tr>
-                                <td scope="row"><?php echo $num1; ?></td>
-                                <td><?php echo $IDMember; ?></td>
-                                <td><?php echo $IDRegFund; ?></td>
-                                <td><?php echo $FullName; ?></td>
-                                <td><?php echo $Amount; ?></td>
-                                <td><a href="dep-pay-edit.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-danger btn-sm">แก้ไข</a></td>
-                            </tr>
-                        <?php
-                            $num1++;
                         }
-                        ?>
-                        <!--
+
+                        $ShowSumAmount = $ShowSumAmount + $Amount;
+                    ?>
+                        <tr>
+                            <td scope="row"><?php echo $num1; ?></td>
+                            <td><?php echo $IDMember; ?></td>
+                            <td><?php echo $IDRegFund; ?></td>
+                            <td><?php echo $FullName; ?></td>
+                            <td><?php echo $Amount; ?></td>
+                            <td>
+                                <a href="dep-pay-edit.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-warning btn-sm">แก้ไข</a>
+                                <a href="dep-pay-del.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-danger btn-sm" onclick="return confirm('ต้องการลบรายการ')">ลบ</a>
+                            </td>
+                        </tr>
+                    <?php
+                        $num1++;
+                    }
+                    ?>
+                    <!--
             <tr>
                 <td scope="row"></td>
                 <td></td>
@@ -102,33 +105,34 @@ $employee_use = $_SESSION['employee_USER'];
                 <td></td>
             </tr>
 -->
-                    </tbody>
-                </table>
-                <?php
-                // echo $SqlFullname;
-                // print_r($QueryShowTable);
-                $SqlCountTable = "Select count(amount) from deposit where username='$employee_use' and createdate='$Datenow' and amount='30'";
-                $QueryCountTable = mysqli_query($link, $SqlCountTable);
-                // echo $SqlCountTable;
-                while ($RQCT = mysqli_fetch_array($QueryCountTable)) {
-                    $showCountTable = $RQCT['count(amount)'];
-                    // print_r($RQCT);
-                }
-                $showRowCountTable = $showCountTable % 30;
-                $showPageCountTable = $showCountTable / 90;
-                // exit();
-                ?>
-                <div>
-                    <!-- จำนวนแถว = <?php echo $showRowCountTable; ?> <br>
-			จำนวนแผ่น = <?php echo number_format($showPageCountTable, 0); ?> <br> -->
-                    จำนวนผู้ฝากรวมทั้งสิ้น <?php echo $showCountTable; ?> ราย
-                </div>
-                <!-- <a href="dep-pay-tool-showall.php" class="btn btn-success col-12">show detail</a> -->
+                </tbody>
+            </table>
+            <?php
+            // echo $SqlFullname;
+            // print_r($QueryShowTable);
+            $SqlCountTable = "Select count(amount) from deposit where username='$employee_use' and createdate='$Datenow' and amount='30'";
+            $QueryCountTable = mysqli_query($link, $SqlCountTable);
+            // echo $SqlCountTable;
+            while ($RQCT = mysqli_fetch_array($QueryCountTable)) {
+                $showCountTable = $RQCT['count(amount)'];
+                // print_r($RQCT);
+            }
+            $showRowCountTable = $showCountTable % 30;
+            $showPageCountTable = $showCountTable / 90;
+            // exit();
+            ?>
+            <div>
+                <!-- จำนวนแถว = <?php echo $showRowCountTable; ?> <br>
+            -->
+                จำนวนแผ่น = <?php echo number_format($showPageCountTable, 0); ?> <br>
+                จำนวนผู้ฝากรวมทั้งสิ้น <?php echo $showCountTable; ?> ราย
             </div>
+            <!-- <a href="dep-pay-tool-showall.php" class="btn btn-success col-12">show detail</a> -->
         </div>
-
     </div>
-    <?PHP
-    include('../tmp_dsh2/table.php');
-    include('../tmp_dsh2/footer.php');
-    ?>
+
+</div>
+<?PHP
+include('../tmp_dsh2/table.php');
+include('../tmp_dsh2/footer.php');
+?>

@@ -47,7 +47,7 @@ $Username = $_GET['Username'];
                     $amountInsCount = $rs2['amountInsCount'];
                     $amountInsSum = $rs2['amountInsSum'];
 
-                    $countSql3 = "SELECT  Count(Amount) as amountSUM 
+                    $countSql3 = "SELECT  sum(Amount) as amountSUM 
           from deposit 
           where createdate='$now_data' and Username='$Username'";
                     $queryCount3 =  mysqli_query($link, $countSql3);

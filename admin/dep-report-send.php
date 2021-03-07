@@ -93,15 +93,15 @@ while($rs1 = mysqli_fetch_array($querydep))
             <!-- </td>    -->
  					</tr>
 <?php 
-    $TotalSumAmount=$TotalSumAmount+$Amount;
     }
+    $TotalSumAmount=$TotalSumAmount+$Amount;
 ?>
  <tr class='table-active'>
  						<td></td>                 
  						<td></td>                 
  						<td></td>                 
  						<td></td>                 
- 						<td>ยอดรวม</td>                  
+ 						<td>ยอดรวม </td>                  
  						<td style='text-align:right'><?php  
  						echo $TotalSumAmount;
  						?></td>   

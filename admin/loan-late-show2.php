@@ -39,12 +39,7 @@ while($rs1 = mysqli_fetch_array($query)){
 exit();
 
     ?>      
-    
-    
-
-
-
-
+       
         <tr>
             <td><?php echo $num; ?></td>
             <td><?php echo $IDMember; ?></td>
