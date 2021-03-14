@@ -25,7 +25,7 @@ if($setup==1){
 // เครื่องที่บ้าน ตัวใหญ่
 	$host = "localhost";
 	$user = "root";
-	$db = "finance";
+	$db = "finance3";
 	$pass = "";
 
 }else{
