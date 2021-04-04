@@ -76,7 +76,7 @@ include('menu.php');
         $last_date = 0;
         $last_dep = 0;
         $total_day = 0;
-        $iin = 0.125;
+        $iin = 0.0125;
         $datebank = "";
         $show_int = 0;
         $midyear = "";
