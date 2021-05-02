@@ -165,8 +165,8 @@ while($rsmemb = mysqli_fetch_array($qmem)){
                         }
                         ?>
                 <div class="btn-group btn-block"> 
-                  <a href="loan-cus-show.php?memid=<?php echo $_GET['memid']; ?>" class="btn btn-danger " >ย้อนกลับ</a>
-                  <a href="loan-close-loanbook.php?RefNo=<?php echo $_GET['RefNo']; ?>" class="btn btn-secondary " >ปิดบัญชี</a>
+                  <a href="loan-chk.php?memid=<?php echo $_GET['memid']; ?>" class="btn btn-danger " >ย้อนกลับ</a>
+                  <!-- <a href="loan-close-loanbook.php?RefNo=<?php echo $_GET['RefNo']; ?>" class="btn btn-secondary " >ปิดบัญชี</a> -->
                 </div>
             </div>
           </div>
