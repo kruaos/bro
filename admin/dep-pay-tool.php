@@ -27,7 +27,9 @@ $employee_use = $_SESSION['employee_USER'];
             <form method="POST" action="dep-pay-insert.php">
                 <div class="form-group">
                     <label>รหัสสมาชิก</label>
-                    <input type="text" class="form-control " placeholder="รหัสสมาชิก" name="IDMember_Dep" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" onfocus="this.value = this.value;" required autofocus>
+                    <input type="number" class="form-control " placeholder="รหัสสมาชิก" name="IDMember_Dep" 
+                    onfocus="this.value = this.value;" required autofocus>
+                    <!-- <input type="text" class="form-control " placeholder="รหัสสมาชิก" name="IDMember_Dep" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}" onfocus="this.value = this.value;" required autofocus> -->
                     <!-- <input type="hidden" class="form-control "  value='a' name="switch_menu1"> -->
                     <!-- <input type="submit" class="form-control btn-warning"  name="switch_menu1"> -->
                 </div>
@@ -88,7 +90,7 @@ $employee_use = $_SESSION['employee_USER'];
                             <td><?php echo $Amount; ?></td>
                             <td>
                                 <a href="dep-pay-edit.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-warning btn-sm">แก้ไข</a>
-                                <a href="dep-pay-del.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-danger btn-sm" onclick="return confirm('ต้องการลบรายการ')">ลบ</a>
+                                <a href="dep-pay-tool-del.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-danger btn-sm" onclick="return confirm('ต้องการลบรายการ')">ลบ</a>
                             </td>
                         </tr>
                     <?php

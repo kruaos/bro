@@ -59,13 +59,11 @@ $employee_use = $_SESSION['employee_USER'];
                         <td scope="row"><?php echo $num1; ?></td>
                         <td><?php echo $IDMember; ?></td>
                         <td><?php echo $IDRegFund; ?></td>
-                        <td><?php echo $FullName;
-                            ?></td>
+                        <td><?php echo $FullName; ?></td>
                         <td><?php echo $Amount; ?></td>
                         <td>
                             <a href="dep-pay-edit.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-warning btn-sm">แก้ไข</a>
-
-                            <a href="dep-pay-del.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-danger btn-sm" onclick="myFunction()">ลบ</a>
+                            <a href="dep-pay-tool-delshowall.php?IDDeposit=<?php echo $IDDeposit; ?>" class="btn-danger btn-sm" onclick="myFunction()">ลบ</a>
                         </td>
                     </tr>
                 <?php
@@ -97,7 +95,8 @@ $employee_use = $_SESSION['employee_USER'];
         // exit();
         ?>
         <div>
-            row nam = <?php echo $showRowCountTable; ?> <br>
+            จำนวนแผ่นทั้งสิ้น = <?php echo $showRowCountTable; ?> แผ่น
+            <br>
             จำนวนผู้ฝากรวมทั้งสิ้น <?php echo $showCountTable; ?> ราย
         </div>
     </div>
@@ -107,9 +106,9 @@ $employee_use = $_SESSION['employee_USER'];
 </div>
 
 <script>
-function myFunction() {
-  confirm("ยืนยันการลบ");
-}
+    function myFunction() {
+        confirm("ยืนยันการลบ");
+    }
 </script>
 <?PHP
 include('../tmp_dsh2/table.php');

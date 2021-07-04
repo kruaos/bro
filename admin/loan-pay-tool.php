@@ -26,9 +26,11 @@ $date_now=date('Y-m-d');
 			<form method="POST" action="loan-pay-tool-select.php" >
 			  <div class="form-group">
 			    <label >รหัสสมาชิก</label>
-				<input type="text" class="form-control "  placeholder="รหัสสมาชิก" name="IDMember"
-				onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"
+				<input type="number" class="form-control "  placeholder="รหัสสมาชิก" name="IDMember"
                 onfocus="this.value = this.value;" required autofocus >
+				<!-- <input type="text" class="form-control "  placeholder="รหัสสมาชิก" name="IDMember"
+				onKeyUp="(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"
+                onfocus="this.value = this.value;" required autofocus > -->
 			  </div>
 		</form>
 	</div>
@@ -39,7 +41,7 @@ $date_now=date('Y-m-d');
 			    <tr>
 			      <th scope="col">#</th>
 			      <th scope="col">เลขสมาชิก</th>
-			      <th scope="col">เลขบัญชี</th>
+			      <!-- <th scope="col">เลขบัญชี</th> -->
 			      <th scope="col">เงินต้น</th>
 			      <th scope="col">ดอกเบี้ย</th>
 			      <th scope="col">รวมจ่าย</th>
@@ -64,12 +66,15 @@ $date_now=date('Y-m-d');
 			    <tr>
 			      <th scope="row"><?php echo $num; $num=$num+1 ?></th>
 			      <td><?php echo $IDMember; ?></td>
-			      <td><?php echo $rs_show_lpm['RefNo']; ?></td>
+			      <!-- <td><?php echo $rs_show_lpm['RefNo']; ?></td> -->
 			      <td><?php echo number_format($rs_show_lpm['PayTotal']); ?></td>
 			      <td><?php echo number_format($rs_show_lpm['Interest']); ?></td>
 			      <td><?php echo number_format($rs_show_lpm['Payment']); ?></td>
 			      <td><?php echo $rs_show_lpm['Username']; ?></td>
-			      <td><a href="loan-pay-tool-edit.php?IDLoanPay=<?php echo $rs_show_lpm['IDLoanPay'];?>&IDMember=<?php echo $IDMember ;?>&RefNo=<?php echo $rs_show_lpm['RefNo'];?>">edit</a></td>
+			      <td>
+				  <a href="loan-pay-tool-edit.php?IDLoanPay=<?php echo $rs_show_lpm['IDLoanPay'];?>&IDMember=<?php echo $IDMember ;?>&RefNo=<?php echo $rs_show_lpm['RefNo'];?>" class="btn btn-warning btn-sm">แก้ไข</a>
+				  <a href="loan-pay-tool-del.php?IDLoanPay=<?php echo $rs_show_lpm['IDLoanPay'];?>&IDMember=<?php echo $IDMember ;?>&RefNo=<?php echo $rs_show_lpm['RefNo'];?>" class="btn btn-danger btn-sm">ลบ</a>
+				  </td>
 			    </tr>
 <?php 
 			}

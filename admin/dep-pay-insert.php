@@ -121,9 +121,10 @@ function clicked() {
              <input class="form-control " type="text" value="เงินฝากสัจจะ : <?php echo number_format($ShowAmount1,2);?>" disabled>
              <input class="form-control " type="text" value="เงินฝากเพื่อนช่วยเพื่อน : <?php echo number_format($ShowAmount2,2);?>" disabled>
              <label >ฝากสัจจะ</label>
-             <input class="form-control " type="text" name="Amount1" value="<?php echo $Amount1;?>" 
-             style="font-size:30px; text-align:right" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"
-             onfocus="this.value = this.value;">
+             <input class="form-control " type="number" name="Amount1" value="<?php echo $Amount1;?>" 
+             style="font-size:30px; text-align:right" 
+             min="30" max="30"
+             required>
              <label >ฝากเพื่อนช่วยเพื่อน</label>
             <!-- <select class="fcustom-select "  name="Amount2"  
             style="font-size:20px; text-align:right" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"
@@ -133,9 +134,10 @@ function clicked() {
               <option value='15'>15</option>
             </select> -->
 
-              <input class="form-control " type="text" name="Amount2" value="<?php echo $Amount2;?>" 
-              style="font-size:30px; text-align:right" onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"
-              onfocus="this.value = this.value;" autofocus>
+              <input class="form-control " type="number" name="Amount2" value="<?php echo $Amount2;?>" 
+              style="font-size:30px; text-align:right" 
+              value='5' min="0" max="20" step="5"
+              onfocus="this.value = this.value;" autofocus required>
 
              <input type="hidden" name="Fullname" value="<?php echo $FullNameMember;?>" >
              <input type="hidden" name="IDMember" value="<?php echo $IDMember;?>" >

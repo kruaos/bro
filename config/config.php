@@ -1,5 +1,5 @@
 <?php
-$setup=1;
+$setup=4;
 if($setup==1){
 // sever ออมทรัพย์
 	$host = "192.168.1.1";

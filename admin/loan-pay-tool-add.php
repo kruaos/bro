@@ -99,19 +99,19 @@ function show_day($showday){
                     <input type="text" style="font-size:30px; text-align:right"  class="form-control"  
 					value="<?php echo number_format($balance_loan,0); ?>" name="balance_loan" disabled>
 			    <label >เงินต้น</label>
-                    <input type="text" style="font-size:30px; text-align:right" class="form-control"  
+                    <input type="number" style="font-size:30px; text-align:right" class="form-control"  
 					value="<?php echo round($Payment_loan); ?>" name="Payment_loan"  id="price[]" onkeyup="fncSum();"/>
 			    <label >ดอกเบี้ย</label>
-                    <input type="text" style="font-size:30px; text-align:right" class="form-control"  
-					value="<?php echo round($instal_loan); ?>" name="instal_loan"  id="price[]" onkeyup="fncSum();">
+                    <input type="number" style="font-size:30px; text-align:right" class="form-control"  
+					value="<?php echo round($instal_loan); ?>" name="instal_loan"  id="price[]" onkeyup="fncSum();" autofocus>
 			    <label >รวมจ่าย</label>
                     <input type="text" style="font-size:30px;  text-align:right" class="form-control"  
-					value="<?php echo number_format($amount_loan,0); ?>" name="amount_loan" autofocus >
+					value="<?php echo number_format($amount_loan,0); ?>" name="amount_loan"  >
 				<br>
 
 
 <?php 
-$LoanPaymentLastDateSql = "select * from loanpaymentlastdate where RefNo='$RefNo'";
+$LoanPaymentLastDateSql = "SELECT * from loanpaymentlastdate where RefNo='$RefNo'";
 $LoanPaymentLastDateQuery = mysqli_query($link, $LoanPaymentLastDateSql);
 while($LPL = mysqli_fetch_array($LoanPaymentLastDateQuery))
 {
