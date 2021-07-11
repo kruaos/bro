@@ -17,18 +17,78 @@ include('menu.php');
     <?php
     if (isset($_GET['IDmember']) == null) {
     ?>
+    <div class="container mt-5">
         <form>
             <div class="form-group">
-                <label>กรอกรหัสมาชิก</label>
-                <input type="number" name="IDmember" class="form-control" placeholder="กรอกรหัสสมาชิก" placeholder="0-9" required>
+                <label class="h1">กรอกรหัสมาชิกสมาชิกสัจจะ (ตรวจสอบการกู้เงิน)</label>
+                <input style="font-size:large; height:50px;" type="number" name="IDmember" class="form-control" placeholder="กรอกรหัสสมาชิก" placeholder="0-9" required>
             </div>
-            <button type="submit" class="btn btn-primary">ค้นหา</button>
+            <button type="submit" class="btn btn-primary col-12"><h1>ค้นหา
+            </h1></button>
         </form>
+    </div>
 
+
+    <div class="container mt-5">
+
+<?php
+if (!isset($_POST['send1'])) {
+  // echo "1";
+?>
+
+  <form class="alert alert-success" method="POST">
+    <div class="form-group ">
+      <label class="h3">ค้นหาด้วยชื่อ</label>
+      <input style="height: 50px; font-size:large;" type="text" class="form-control" name="nameBookBank" placeholder="ป้อนชื่อบัญชี" required>
+    </div>
+    <button type="submit" class="col-12 btn btn-success" name="send1">
+      <h3>ค้นหา</h3>
+    </button>
+  </form>
+
+
+<?php
+
+} else {
+  // echo "2";
+?>
+  <table class="table table-striped">
+    <tr>
+      <th>ลำดับ</th>
+      <th>ชื่อ-สกุล</th>
+      <th>ชื่อบัญชี</th>
+      <th>สถานะสมาชิก</th>
+      <th>ทำรายการล่าสุด</th>
+    </tr>
+    <?php
+    include('../config/config.php');
+    $nameBB = $_POST['nameBookBank'];
+    $sql = "SELECT * from member  where Fristname like '%$nameBB%' or Lastname like '%$nameBB%' ";
+    $qsql = mysqli_query($link, $sql);
+
+    while ($rs1 = mysqli_fetch_array($qsql)) {
+        
+      echo "<tr>";
+      $bankid=$rs1['bankid'];
+      echo "<td>" ."<a href='bank-event-dewi.php?bankid=$bankid'>". $rs1['bankid'] ."</a>". "</td>";
+      echo "<td>" . $rs1['Title'] . $rs1['Fristname'] . $rs1['Lastname'] . "</td>";
+      echo "</tr>";
+    }
+    
+    ?>
+  </table>
+  <a class="btn btn-danger" href="bank-event-add.php">ย้อนกลับ</a>
+<?php
+
+}
+?>
+
+</div>
 
 
     <?php
     } else {
+        // แสดงส่วนข้อมูลรายการเงิน 
         // echo "is null";
         $IDmember = $_GET['IDmember'];
 

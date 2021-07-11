@@ -16,14 +16,16 @@ include('menu.php');
     if (isset($_GET['memid']) == null) {
         // echo "not see memid";
     ?>
-
+    <div class="container mt-5">
         <form>
             <div class="form-group">
-                <label>กรอกรหัสมาชิก</label>
-                <input type="number" name="memid" class="form-control" placeholder="กรอกรหัสสมาชิก" placeholder="0-9" required>
+            <label class="h1">กรอกรหัสมาชิกสมาชิกสัจจะ (ตรวจสอบการค้าประกัน) </label>
+                <input style="font-size:large; height:50px;"  type="number" name="memid" class="form-control" placeholder="กรอกรหัสสมาชิก" placeholder="0-9" required>
             </div>
-            <button type="submit" class="btn btn-primary">ค้นหา</button>
+            <button type="submit" class="btn btn-primary col-12" ><h1>ค้นหา
+            </h1></button>
         </form>
+    </div>
 
 
     <?php

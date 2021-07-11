@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../tmp_dsh2/header.php');
 include('navbar.php');
 include('menu.php');
@@ -7,36 +7,34 @@ include('menu.php');
 
 
 
-<br>
-<!-- <h1 class="display-1">bank-event</h1> -->
-<form class=" alert alert-primary" action="bank-event-dewi.php">
-  <div class="form-group ">
-    <label>รายการฝาก ถอน คิดดอกเบี้ย</label>
-    <input type="text" class="form-control" name="bankid" placeholder="กรอกเลขบัญชีธนาคาร">
+  <br>
+  <!-- <h1 class="display-1">bank-event</h1> -->
+  <div class="container">
+    <div>
+      <a class="btn btn-success col-12 mt-3" href="bank-event-add.php">
+        <h1>รายการฝาก-ถอนเงิน</h1>
+      </a>
+      <a class="btn btn-warning col-12 mt-3" href="bank-event-updatebook.php">
+        <h1>ปรับปรุงข้อมูลบัญชีธนาคาร</h1>
+      </a>
+      <a class="btn btn-primary col-12 mt-3" href="bank-event-updatedewi.php">
+        <h1>ปรับปรุงรายการฝาก-ถอนเงิน</h1>
+      </a>
+      <a class="btn btn-danger col-12 mt-3" href="bank-event-witdep.php">
+        <h1>รายการถอนเงินสัจจะ</h1>
+      </a>
+    </div>
+    <div>
+    <h1 class="mt-5" style="text-align:center;">รายการอื่นๆ</h1>
+      <a class="btn btn-secondary col-12 mt-3" href="loan-agreement.php">
+        <h1>ตรวจสอบการกู้เงิน</h1>
+      </a>
+      
+    </div>
   </div>
-  <button type="submit" class=" form-control btn btn-primary">ทำรายการ</button>
-</form>
-<br>
-<form  class=" alert alert-danger">
-  <div class="form-group ">
-    <label>ปรับปรุงบัญชีธนาคาร</label>
-    <input type="text" class="form-control"  name="bankid" placeholder="กรอกเลขบัญชีธนาคาร">
-  </div>
-  <button type="submit" class=" form-control btn btn-danger">ทำรายการแก้ไขบัญชี</button>
-</form>
-<br>
-
-<form  class=" alert alert-warning">
-
-  <div class="form-group">
-    <label>ถอนเงินฝากสัจจะ</label>
-    <input type="text" class="form-control" name="IDFund" placeholder="กรอกเลขบัญชีเงินฝากสัจจะ">
-  </div>
-  <button type="submit" class=" form-control btn btn-warning">ทำรายการ</button>
-</form>
 
 </div>
-<?PHP 
+<?PHP
 include('../tmp_dsh2/table.php');
 include('../tmp_dsh2/footer.php');
 ?>
